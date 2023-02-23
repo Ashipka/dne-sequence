@@ -1,0 +1,23 @@
+# IDE files
+.idea
+.vscode
+*.iml
+
+# Build output
+target/
+
+# Logs
+logs/
+
+# Maven files
+mvnw
+mvnw.cmd
+.mvn/
+
+# Lombok
+*.class
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
