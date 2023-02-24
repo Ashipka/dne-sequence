@@ -16,19 +16,19 @@ public class DneServiceImpl implements DneService {
 
         // populate mins array
         mins[0] = arr[0];
-        for (int i = 1; i < arr.length; i++) {
-            mins[i] = Math.min(mins[i - 1], arr[i]);
-        }
-
-        // populate maxs array
         maxs[0] = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            maxs[i] = Math.max(maxs[i - 1], arr[i]);
+            mins[i] = Math.min(mins[i - 1], arr[i]);
+            if (mins[i]<mins[i-1]) {
+                maxs[i] = mins[i];
+            } else {
+                maxs[i] = Math.max(maxs[i - 1], arr[i]);
+            }
         }
 
         // check for DNE sequence
         for (int i = 2; i <= arr.length - 1; i++) {
-            if (mins[i - 2] < arr[i] && arr[i] < maxs[i - 1]) {
+            if (mins[i - 1] < arr[i] && arr[i] < maxs[i - 1]) {
                 return true; // DNE sequence found
             }
         }

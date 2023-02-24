@@ -25,19 +25,6 @@ import static com.shypkao.dne.controller.DneRestController.SERVER_ENDPOINT;
         private MockMvc mockMvc;
 
         @Test
-        public void testServerReturnsFalseForArrayWithoutDneSequence() throws Exception {
-            int[] seq = {1, 2, 3, 4, 5};
-            DneRequest request = new DneRequest(seq);
-            String requestBody = new ObjectMapper().writeValueAsString(request);
-
-            mockMvc.perform(MockMvcRequestBuilders.post(SERVER_ENDPOINT)
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(requestBody))
-                    .andExpect(MockMvcResultMatchers.status().isOk())
-                    .andExpect(MockMvcResultMatchers.content().string("false"));
-        }
-
-        @Test
         public void testServerReturnsTrueForArrayWithDneSequence() throws Exception {
             int[] seq = {1, 3, 2, 4, 5};
             DneRequest request = new DneRequest(seq);
@@ -48,5 +35,30 @@ import static com.shypkao.dne.controller.DneRestController.SERVER_ENDPOINT;
                     .andExpect(MockMvcResultMatchers.status().isOk())
                     .andExpect(MockMvcResultMatchers.content().string("true"));
         }
+
+    @Test
+    public void testServerReturnsFalseForArrayWithoutDneSequence1() throws Exception {
+        int[] seq = {1, 2, 3, 4, 5};
+        DneRequest request = new DneRequest(seq);
+        String requestBody = new ObjectMapper().writeValueAsString(request);
+
+        mockMvc.perform(MockMvcRequestBuilders.post(SERVER_ENDPOINT)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("false"));
+    }
+
+    @Test
+    public void testServerReturnsFalseForArrayWithDneSequence2() throws Exception {
+        int[] seq = {8, 2, 2, 7};
+        DneRequest request = new DneRequest(seq);
+        String requestBody = new ObjectMapper().writeValueAsString(request);
+        mockMvc.perform(MockMvcRequestBuilders.post(SERVER_ENDPOINT)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(requestBody))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("false"));
+    }
 
 }
