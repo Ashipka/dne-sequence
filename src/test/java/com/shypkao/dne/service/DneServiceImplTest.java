@@ -48,4 +48,18 @@ public class DneServiceImplTest {
         Assertions.assertTrue(result);
     }
 
+    @Test
+    public void testHasDneSequenceReturnsTrueForArrayWithDneSequence2() {
+        int[] arr = {5, 9, 2, 6};
+        boolean result = dneService.hasDneSequence(arr);
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    public void testHasDneSequenceReturnsTrueForArrayWithDneSequence3() {
+        int[] arr = {9, 6, 3, 12, 10};
+        boolean result = dneService.hasDneSequence(arr);
+        Assertions.assertTrue(result);
+    }
+
 }

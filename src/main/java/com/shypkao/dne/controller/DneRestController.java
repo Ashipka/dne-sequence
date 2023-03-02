@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
+
 @RestController
 @RequiredArgsConstructor
 @Slf4j
@@ -24,6 +26,7 @@ public class DneRestController {
     public boolean checkDneSequence(@RequestBody DneRequest request) {
         try {
             int[] seq = request.getSeq();
+            log.info("New request received with arr: " + Arrays.toString(seq));
             return dneService.hasDneSequence(seq);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);

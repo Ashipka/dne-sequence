@@ -41,7 +41,13 @@ This will run all the JUnit tests in the project.
 
 ## **Efficiency**
 
-The space complexity of this algorithm is O(n) and the time complexity is also O(n).
+The time complexity of the subSet method in TreeSet is O(log k + m), where k is the size of the TreeSet and m is the size of the subset returned by the method. 
+
+Overall, the time complexity of the algorithm is O(n log k + km), where n is the length of the input array.
+
+
+
+
 
 ## **Contributing**
 
